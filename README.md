@@ -5,13 +5,13 @@
    <details>
     <summary>Alarm Manager Home view 🏠</summary>
   
-    <img alt="Alarm Manager Home view" margin="0 auto" width="30%" height="auto" src="./screenshot/Alarm_ss.png"/>
+    <img alt="Alarm Manager Home view" height="500vh" src="./screenshot/Alarm_ss.png"/>
   </details>
 
   <details>
     <summary>Popup Timepicker 🪧 </summary>
   
-    <img alt="Popup Timepicker" margin="0 auto" width="30%" height="auto" src="./screenshot/alarm_ss_popup_timepicker.png"/>
+    <img alt="Popup Timepicker" height="500vh" src="./screenshot/alarm_ss_popup_timepicker.png"/>
   </details>
   
 - For bugs/feedback please [create](https://github.com/SandeepUrankar/AlarmManager/issues/new) issues. 🪲🐛
