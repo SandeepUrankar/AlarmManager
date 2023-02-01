@@ -1,13 +1,13 @@
 package com.example.alarm
 
-import android.content.Intent
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TimePicker
 import android.widget.Toast
+import androidx.core.view.accessibility.AccessibilityEventCompat.setAction
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
     private lateinit var fab : FloatingActionButton
@@ -21,7 +21,12 @@ class MainActivity : AppCompatActivity() {
         popupTimePicker = AddAlarm()
         val fragmentManager = supportFragmentManager
         fab.setOnClickListener {
-            Toast.makeText(this, "Choose time to set Alarm. ⏰", Toast.LENGTH_SHORT).show()
+            Snackbar.make(this, findViewById(R.id.cardView),"Choose time to set Alarm. ⏰", Snackbar.ANIMATION_MODE_SLIDE )
+                .setAnchorView(R.id.fabAddAlarm)
+                .setBackgroundTint(resources.getColor(R.color.background_card))
+                .setTextColor(resources.getColor(R.color.white))
+                .show()
+//            Toast.makeText(this, "Choose time to set Alarm. ⏰", Toast.LENGTH_SHORT).show()
             popupTimePicker.show(fragmentManager, "Choose time.")
         }
     }
@@ -36,6 +41,13 @@ class MainActivity : AppCompatActivity() {
     fun setTime(selectedHours: Int, selectedMins: Int){
         this.selectedHours = selectedHours
         this.selectedMins = selectedMins
-        Toast.makeText(applicationContext, "${this.selectedHours}:${this.selectedMins}", Toast.LENGTH_SHORT).show()
+        Snackbar.make(fab,"Alarm is set to ${this.selectedHours}:${this.selectedMins}", Snackbar.LENGTH_SHORT )
+            .setAction("OK"){}
+            .setAnchorView(R.id.fabAddAlarm)
+            .setBackgroundTint(resources.getColor(R.color.background_card))
+            .setTextColor(resources.getColor(R.color.white))
+            .setActionTextColor(resources.getColor(R.color.teal_200))
+            .show()
+//        Toast.makeText(applicationContext, "${this.selectedHours}:${this.selectedMins}", Toast.LENGTH_SHORT).show()
     }
 }
