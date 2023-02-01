@@ -41,6 +41,8 @@ class MainActivity : AppCompatActivity() {
     fun setTime(selectedHours: Int, selectedMins: Int){
         this.selectedHours = selectedHours
         this.selectedMins = selectedMins
+        val saveData = SaveData(applicationContext)
+        saveData.setAlam(this.selectedHours, this.selectedMins)
         Snackbar.make(fab,"Alarm is set to ${this.selectedHours}:${this.selectedMins}", Snackbar.LENGTH_SHORT )
             .setAction("OK"){}
             .setAnchorView(R.id.fabAddAlarm)
