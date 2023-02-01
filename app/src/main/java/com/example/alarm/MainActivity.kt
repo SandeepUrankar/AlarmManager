@@ -3,11 +3,13 @@ package com.example.alarm
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.accessibility.AccessibilityEventCompat.setAction
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.switchmaterial.SwitchMaterial
 
 class MainActivity : AppCompatActivity() {
     private lateinit var fab : FloatingActionButton
@@ -41,6 +43,7 @@ class MainActivity : AppCompatActivity() {
     fun setTime(selectedHours: Int, selectedMins: Int){
         this.selectedHours = selectedHours
         this.selectedMins = selectedMins
+        findViewById<TextView>(R.id.tvTime).setText("${this.selectedHours}:${this.selectedMins}")
         val saveData = SaveData(applicationContext)
         saveData.setAlam(this.selectedHours, this.selectedMins)
         Snackbar.make(fab,"Alarm is set to ${this.selectedHours}:${this.selectedMins}", Snackbar.LENGTH_SHORT )
