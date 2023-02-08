@@ -15,6 +15,16 @@ class AlarmReceiver: BroadcastReceiver() {
             val bundle = intent.extras
             Log.d("MYTAG", "Time is up. ${bundle?.getInt("Hours")}:${bundle?.getInt("Minutes")}")
             Toast.makeText(context, "Time is up. ${bundle?.getInt("Hours")}:${bundle?.getInt("Minutes")}", Toast.LENGTH_LONG).show()
+
+            val notifyme=Notification()
+            if (context != null) {
+                notifyme.myNotification(context,"Time is up. ${bundle?.getInt("Hours")}:${bundle?.getInt("Minutes")}",10)
+            }
+
+        }else if (intent!!.action.equals("android.intent.action.BOOT_COMPLETED")){
+            val saveData=SaveData(context!!)
+            saveData.setAlam(saveData.getHour(),saveData.getMin())
         }
+
     }
 }

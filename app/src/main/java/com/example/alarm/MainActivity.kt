@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
         this.selectedMins = selectedMins
         findViewById<TextView>(R.id.tvTime).setText("${this.selectedHours}:${this.selectedMins}")
         val saveData = SaveData(applicationContext)
+        saveData.SaveData(this.selectedHours,this.selectedMins)
         saveData.setAlam(this.selectedHours, this.selectedMins)
         Snackbar.make(fab,"Alarm is set to ${this.selectedHours}:${this.selectedMins}", Snackbar.LENGTH_SHORT )
             .setAction("OK"){}
