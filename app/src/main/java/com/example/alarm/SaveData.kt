@@ -6,6 +6,7 @@ import android.app.PendingIntent
 import android.app.Service
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.icu.util.Calendar
 import android.os.Build
 import android.util.Log
@@ -13,7 +14,20 @@ import android.util.Log
 class SaveData(context: Context) {
 
     var context: Context = context
+    var sharedRef:SharedPreferences=context.getSharedPreferences("myRef",Context.MODE_PRIVATE)
 
+    fun SaveData(hours:Int,minutes:Int){
+        var editor=sharedRef!!.edit()
+        editor.putInt("hour",hours)
+        editor.putInt("minute",minutes)
+        editor.commit()
+    }
+
+    fun getHour():Int{
+        return sharedRef!!.getInt("hour",0)
+    } fun getMin():Int{
+        return sharedRef!!.getInt("minute",0)
+    }
     /**
      * Method to set Alarm.
      * @param hours Int variable to hold hours
