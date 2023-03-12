@@ -1,6 +1,5 @@
 package com.example.alarm
 
-import android.annotation.SuppressLint
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.app.Service
@@ -24,16 +23,16 @@ class SaveData(context: Context) {
     }
 
     fun getHour():Int{
-        return sharedRef!!.getInt("hour",0)
+        return sharedRef.getInt("hour",0)
     } fun getMin():Int{
-        return sharedRef!!.getInt("minute",0)
+        return sharedRef.getInt("minute",0)
     }
     /**
      * Method to set Alarm.
      * @param hours Int variable to hold hours
      * @param mins Int variable to hold minutes
      */
-    fun setAlam(hours: Int, mins: Int){
+    fun setAlarm(hours: Int, mins: Int){
         Log.d("MYTAG", "Set alarm is called with $hours: $mins")
         val calendar = Calendar.getInstance()
         calendar.set(
@@ -63,7 +62,8 @@ class SaveData(context: Context) {
         } else {
             pendingIntent =PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         }
-        alarmManager.setRepeating(AlarmManager.RTC, calendar.timeInMillis, AlarmManager.INTERVAL_DAY ,pendingIntent)
+        alarmManager.set(AlarmManager.RTC, calendar.timeInMillis, pendingIntent)
+//        alarmManager.setRepeating(AlarmManager.RTC, calendar.timeInMillis,  ,pendingIntent)
 
     }
 }
